@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function Home() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("All Stories");
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -108,13 +109,7 @@ export default function Home() {
     }
   ];
 
-  const newsCategories = [
-    { name: "All Stories", color: "bg-slate-100" },
-    { name: "Voting Rights", color: "bg-red-100" },
-    { name: "Elections", color: "bg-blue-100" },
-    { name: "Civic Education", color: "bg-green-100" },
-    { name: "Policy & Accountability", color: "bg-purple-100" }
-  ];
+  const newsCategories = ["All Stories", "Voting Rights", "Elections", "Civic Education", "Policy & Accountability"];
 
   const quickLinks = [
     { label: "Check Registration", href: "#" },
@@ -131,86 +126,85 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto px-4 py-4">
+      <header className="sticky top-0 z-50 bg-white border-b-4 border-red-600">
+        <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center">
-                <span className="text-white font-bold text-lg">🗳️</span>
-              </div>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-xl">🗳️</div>
               <div>
-                <div className="font-bold text-gray-900">People Powered</div>
-                <div className="text-xs text-red-600 font-semibold">GEORGIA</div>
+                <div className="font-bold text-gray-900 text-lg">People Powered</div>
+                <div className="text-xs text-red-600 font-bold tracking-wide">GEORGIA</div>
               </div>
             </div>
             <nav className="hidden md:flex items-center gap-8">
-              <a href="#newsroom" className="text-gray-700 hover:text-red-600 font-medium">Newsroom</a>
-              <a href="#issues" className="text-gray-700 hover:text-red-600 font-medium">Issues</a>
-              <a href="#tools" className="text-gray-700 hover:text-red-600 font-medium">Civic Tools</a>
-              <a href="#about" className="text-gray-700 hover:text-red-600 font-medium">About</a>
-              <a href="#involved" className="text-gray-700 hover:text-red-600 font-medium">Get Involved</a>
+              <a href="#newsroom" className="text-gray-700 hover:text-red-600 font-medium text-sm">Newsroom</a>
+              <a href="#issues" className="text-gray-700 hover:text-red-600 font-medium text-sm">Issues</a>
+              <a href="#tools" className="text-gray-700 hover:text-red-600 font-medium text-sm">Civic Tools</a>
+              <a href="#about" className="text-gray-700 hover:text-red-600 font-medium text-sm">About</a>
+              <a href="#involved" className="text-gray-700 hover:text-red-600 font-medium text-sm">Get Involved</a>
             </nav>
-            <Button className="bg-red-600 hover:bg-red-700 text-white">Take Action</Button>
+            <a href="#" className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 font-bold text-sm">Take Action</a>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-900 via-red-900 to-slate-900 text-white py-20 md:py-32">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+      <section className="bg-gradient-to-br from-slate-900 via-red-900 to-slate-900 text-white py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-16 items-start">
             <div>
-              <div className="inline-block bg-red-600 text-white px-3 py-1 rounded text-sm font-semibold mb-6">
+              <div className="inline-block bg-red-600 text-white px-3 py-1 rounded text-xs font-bold mb-6 tracking-wide">
                 🔴 LIVE CIVIC NEWSROOM
               </div>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                Georgia's Democracy <span className="text-red-400">Starts with You</span>
+              <h1 className="text-6xl md:text-7xl font-black mb-6 leading-tight">
+                Georgia's Democracy<br />
+                <span className="text-red-400">Starts with You</span>
               </h1>
-              <p className="text-lg text-gray-200 mb-8 leading-relaxed">
+              <p className="text-lg text-gray-200 mb-10 leading-relaxed max-w-lg">
                 People Powered Georgia is a nonpartisan civic newsroom dedicated to keeping Georgians informed, organized, and at the center of their democracy — from the ballot box to the State Capitol.
               </p>
-              <div className="flex gap-4 mb-12">
-                <Button className="bg-red-600 hover:bg-red-700 text-white px-8 py-6 text-lg border-2 border-red-600">
+              <div className="flex gap-4 mb-16">
+                <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 font-bold border-2 border-red-600">
                   📖 Read the Newsroom
-                </Button>
-                <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-red-900 px-8 py-6 text-lg">
+                </button>
+                <button className="border-2 border-white text-white hover:bg-white hover:text-red-900 px-8 py-4 font-bold">
                   Get Involved →
-                </Button>
+                </button>
               </div>
-              <div className="grid grid-cols-3 gap-6">
+              <div className="grid grid-cols-3 gap-8">
                 <div>
-                  <div className="text-4xl font-bold">500K+</div>
-                  <div className="text-sm text-gray-300">VOTERS REACHED</div>
+                  <div className="text-5xl font-black">500K+</div>
+                  <div className="text-xs text-gray-300 font-bold tracking-wide">VOTERS REACHED</div>
                 </div>
                 <div>
-                  <div className="text-4xl font-bold">2K+</div>
-                  <div className="text-sm text-gray-300">VOLUNTEERS</div>
+                  <div className="text-5xl font-black">2K+</div>
+                  <div className="text-xs text-gray-300 font-bold tracking-wide">VOLUNTEERS</div>
                 </div>
                 <div>
-                  <div className="text-4xl font-bold">159</div>
-                  <div className="text-sm text-gray-300">COUNTIES</div>
+                  <div className="text-5xl font-black">159</div>
+                  <div className="text-xs text-gray-300 font-bold tracking-wide">COUNTIES</div>
                 </div>
               </div>
             </div>
-            <div className="bg-gray-800 bg-opacity-50 rounded-lg p-8 border border-gray-700">
+            <div className="bg-gray-800 bg-opacity-60 rounded-lg p-8 border border-gray-700 backdrop-blur">
               <div className="flex items-center gap-2 mb-6">
-                <div className="w-2 h-2 rounded-full bg-green-400"></div>
-                <span className="text-green-400 font-semibold">Live Updates</span>
+                <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                <span className="text-green-400 font-bold text-sm">Live Updates</span>
               </div>
-              <div className="space-y-4">
-                <div className="pb-4 border-b border-gray-700">
-                  <div className="text-xs text-gray-400 mb-2">Voting Rights • 2h ago</div>
-                  <h3 className="font-semibold text-white mb-1">Henry McNeal Turner Voting Rights Act Advances</h3>
+              <div className="space-y-6">
+                <div className="pb-6 border-b border-gray-700">
+                  <div className="text-xs text-gray-400 font-semibold mb-2">Voting Rights • 2h ago</div>
+                  <h3 className="font-bold text-white mb-2 text-base">Henry McNeal Turner Voting Rights Act Advances</h3>
                   <p className="text-sm text-gray-300">Advocates push for stronger state-level protections after federal rollbacks raise alarm across Georgia communities.</p>
                 </div>
-                <div className="pb-4 border-b border-gray-700">
-                  <div className="text-xs text-gray-400 mb-2">Election Access • 5h ago</div>
-                  <h3 className="font-semibold text-white mb-1">Early Voting Expansion Gains Bipartisan Support</h3>
+                <div className="pb-6 border-b border-gray-700">
+                  <div className="text-xs text-gray-400 font-semibold mb-2">Election Access • 5h ago</div>
+                  <h3 className="font-bold text-white mb-2 text-base">Early Voting Expansion Gains Bipartisan Support</h3>
                   <p className="text-sm text-gray-300">New proposals would add weekend hours and additional drop boxes across rural Georgia counties.</p>
                 </div>
                 <div>
-                  <div className="text-xs text-gray-400 mb-2">Civic Education • 1d ago</div>
-                  <h3 className="font-semibold text-white mb-1">Know Your Polling Rights Workshop — Statewide Tour</h3>
+                  <div className="text-xs text-gray-400 font-semibold mb-2">Civic Education • 1d ago</div>
+                  <h3 className="font-bold text-white mb-2 text-base">Know Your Polling Rights Workshop — Statewide Tour</h3>
                   <p className="text-sm text-gray-300">Free trainings available in Atlanta, Savannah, Macon and Augusta — helping voters navigate new ID requirements.</p>
                 </div>
               </div>
@@ -220,20 +214,20 @@ export default function Home() {
       </section>
 
       {/* Civic Tools Section */}
-      <section id="tools" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Civic Tools & Resources</h2>
+      <section id="tools" className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-5xl font-black text-gray-900 mb-16 text-center">Civic Tools & Resources</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {civicTools.map((tool, idx) => (
               <a
                 key={idx}
                 href={tool.link}
-                className="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg hover:border-red-300 transition-all group"
+                className="bg-white rounded-lg p-8 border-2 border-gray-200 hover:border-red-400 hover:shadow-lg transition-all group"
               >
-                <div className="text-4xl mb-4">{tool.icon}</div>
-                <div className="text-xs font-semibold text-red-600 mb-2">{tool.label}</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-red-600">{tool.title}</h3>
-                <p className="text-gray-600 text-sm">{tool.description}</p>
+                <div className="text-5xl mb-4">{tool.icon}</div>
+                <div className="text-xs font-black text-red-600 mb-3 tracking-wide">{tool.label}</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-red-600">{tool.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{tool.description}</p>
               </a>
             ))}
           </div>
@@ -241,84 +235,85 @@ export default function Home() {
       </section>
 
       {/* Organizations Section */}
-      <section id="about" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Partner Organizations</h2>
+      <section id="about" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-5xl font-black text-gray-900 mb-16 text-center">Partner Organizations</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {organizations.map((org, idx) => (
-              <div key={idx} className="bg-gray-50 rounded-lg p-6 border border-gray-200 hover:border-red-300 transition-colors">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded bg-red-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-                    {org.abbr}
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 mb-2">{org.name}</h3>
-                    <p className="text-sm text-gray-600">{org.description}</p>
-                  </div>
+              <div key={idx} className="bg-white rounded-lg p-8 border-2 border-gray-200 hover:border-red-400 hover:shadow-lg transition-all">
+                <div className="w-12 h-12 rounded-lg bg-red-600 text-white flex items-center justify-center font-bold mb-4 text-sm">
+                  {org.abbr}
                 </div>
+                <h3 className="font-bold text-gray-900 mb-2 text-base">{org.name}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{org.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Newsroom Section */}
-      <section id="newsroom" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">Latest News</h2>
-          <div className="flex justify-center gap-4 mb-12 flex-wrap">
-            {newsCategories.map((cat, idx) => (
+      {/* News Section */}
+      <section id="newsroom" className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-5xl font-black text-gray-900 mb-12 text-center">Latest News</h2>
+          <div className="flex flex-wrap gap-3 justify-center mb-16">
+            {newsCategories.map((cat) => (
               <button
-                key={idx}
-                className={`px-4 py-2 rounded font-medium transition-colors ${
-                  idx === 0
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-6 py-2 font-bold text-sm rounded ${
+                  activeCategory === cat
                     ? "bg-red-600 text-white"
-                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                    : "bg-white text-gray-700 border-2 border-gray-200 hover:border-red-400"
                 }`}
               >
-                {cat.name}
+                {cat}
               </button>
             ))}
           </div>
-          <div className="bg-white rounded-lg p-8 text-center border border-gray-200">
-            <p className="text-gray-600 mb-4">Newsroom content will appear here</p>
-            <Button className="bg-red-600 hover:bg-red-700 text-white">View All Stories</Button>
+          <div className="text-center py-16 bg-white rounded-lg border-2 border-gray-200">
+            <p className="text-gray-500 font-semibold">Newsroom content will appear here</p>
+          </div>
+          <div className="text-center mt-8">
+            <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 font-bold">
+              View All Stories
+            </button>
           </div>
         </div>
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-16 bg-red-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
-          <p className="text-lg mb-8 opacity-90">Get the latest news and updates delivered to your inbox</p>
-          <form onSubmit={handleSubscribe} className="max-w-md mx-auto flex gap-2">
+      <section className="py-24 bg-red-600 text-white">
+        <div className="max-w-2xl mx-auto px-4 text-center">
+          <h2 className="text-4xl font-black mb-4">Stay Updated</h2>
+          <p className="text-lg mb-8 text-red-100">Get the latest news and updates delivered to your inbox</p>
+          <form onSubmit={handleSubscribe} className="flex gap-3">
             <input
               type="email"
               placeholder="your@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 px-4 py-3 rounded text-gray-900"
+              className="flex-1 px-6 py-3 rounded text-gray-900 font-medium"
               required
             />
-            <Button type="submit" className="bg-white text-red-600 hover:bg-gray-100 font-semibold">
+            <button type="submit" className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-3 font-bold rounded">
               Subscribe
-            </Button>
+            </button>
           </form>
-          {subscribed && <p className="text-sm mt-4 text-green-100">✓ Thank you for subscribing!</p>}
+          {subscribed && <p className="text-green-200 mt-4 font-semibold">Thanks for subscribing!</p>}
         </div>
       </section>
 
       {/* Quick Links Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-16 bg-white border-t-4 border-red-600">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-12">
             <div>
-              <h3 className="font-bold text-gray-900 mb-4">Quick Links</h3>
+              <h3 className="font-black text-gray-900 mb-4">Voting</h3>
               <ul className="space-y-2">
-                {quickLinks.slice(0, 3).map((link, idx) => (
-                  <li key={idx}>
-                    <a href={link.href} className="text-red-600 hover:text-red-700 font-medium">
+                {quickLinks.slice(0, 5).map((link) => (
+                  <li key={link.label}>
+                    <a href={link.href} className="text-red-600 hover:text-red-700 font-semibold text-sm">
                       {link.label}
                     </a>
                   </li>
@@ -326,11 +321,11 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-gray-900 mb-4">Get Involved</h3>
+              <h3 className="font-black text-gray-900 mb-4">Get Involved</h3>
               <ul className="space-y-2">
-                {quickLinks.slice(3, 6).map((link, idx) => (
-                  <li key={idx}>
-                    <a href={link.href} className="text-red-600 hover:text-red-700 font-medium">
+                {quickLinks.slice(5, 9).map((link) => (
+                  <li key={link.label}>
+                    <a href={link.href} className="text-red-600 hover:text-red-700 font-semibold text-sm">
                       {link.label}
                     </a>
                   </li>
@@ -338,15 +333,32 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-gray-900 mb-4">Support</h3>
-              <ul className="space-y-2">
-                {quickLinks.slice(6, 9).map((link, idx) => (
-                  <li key={idx}>
-                    <a href={link.href} className="text-red-600 hover:text-red-700 font-medium">
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
+              <h3 className="font-black text-gray-900 mb-4">Contact</h3>
+              <ul className="space-y-3 text-sm">
+                <li>
+                  <a href="tel:1-877-524-8683" className="text-red-600 hover:text-red-700 font-semibold">
+                    1-877-524-8683
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-red-600 hover:text-red-700 font-semibold">
+                    RideToThePoll.com
+                  </a>
+                </li>
+                <li className="flex gap-4 pt-2">
+                  <a href="#" className="text-red-600 hover:text-red-700">
+                    <Twitter size={20} />
+                  </a>
+                  <a href="#" className="text-red-600 hover:text-red-700">
+                    <Facebook size={20} />
+                  </a>
+                  <a href="#" className="text-red-600 hover:text-red-700">
+                    <Instagram size={20} />
+                  </a>
+                  <a href="#" className="text-red-600 hover:text-red-700">
+                    <Youtube size={20} />
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -354,53 +366,9 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center">
-                  <span className="text-white font-bold">🗳️</span>
-                </div>
-                <div>
-                  <div className="font-bold">People Powered</div>
-                  <div className="text-xs text-red-400">GEORGIA</div>
-                </div>
-              </div>
-              <p className="text-gray-400 text-sm">A nonpartisan civic newsroom dedicated to keeping Georgians informed and engaged.</p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Contact</h4>
-              <div className="space-y-2 text-gray-400 text-sm">
-                <p className="flex items-center gap-2">
-                  <Phone size={16} /> 1-866-OUR-VOTE (1-866-687-9663)
-                </p>
-                <p className="flex items-center gap-2">
-                  <Phone size={16} /> 1-877-524-8683
-                </p>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Resources</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a href="#" className="hover:text-white">Contact Us</a></li>
-                <li><a href="#" className="hover:text-white">Full History</a></li>
-                <li><a href="#" className="hover:text-white">Submit a Tip</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Follow Us</h4>
-              <div className="flex gap-4">
-                <a href="#" className="text-gray-400 hover:text-red-400"><Twitter size={20} /></a>
-                <a href="#" className="text-gray-400 hover:text-red-400"><Facebook size={20} /></a>
-                <a href="#" className="text-gray-400 hover:text-red-400"><Instagram size={20} /></a>
-                <a href="#" className="text-gray-400 hover:text-red-400"><Youtube size={20} /></a>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
-            <p>&copy; 2026 People Powered Georgia. All rights reserved.</p>
-          </div>
+      <footer className="bg-gray-900 text-gray-300 py-12">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p className="text-sm">© 2024 People Powered Georgia. All rights reserved.</p>
         </div>
       </footer>
     </div>
